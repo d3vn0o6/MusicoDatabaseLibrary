@@ -2,5 +2,6 @@ import sqlite3
 
 # Connect to Sqlite database 
 
-def database(db_file_path='musicodb.db')
+def database(db_file_path='musicodb.db'):
+  
 
