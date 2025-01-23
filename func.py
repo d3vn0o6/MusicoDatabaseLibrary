@@ -1,21 +1,25 @@
-import sqlite3 as db
+import sqlite3 as conn
+from sqlite3 import Cursor as curs
 
-# Connect to Sqlite database 
-class Database:
-  def __init__(self):
-    self.data_file = "database.db"
-    self.connect()
-    self.cursor()
-    
-  def connect(self):
-    return db.connect(self.data_file)
-    
-  def cursor(self):
-    return self.connect().cursor()
-    
-    
-  
-         
-  
+def connection(DB_FILE):
+    return conn.connect(DB_FILE)
     
 
+
+def create_db(**req):
+    try:
+        curs.execute(**req)
+        conn.commit()
+    except sqlite3Error as sqlerr:
+        print(f'Sqlite Error: {sqlerr}')
+        conn.rollback()
+    finally:
+    if conn:
+        conn.close()
+
+def 
+        
+
+
+        
+        
