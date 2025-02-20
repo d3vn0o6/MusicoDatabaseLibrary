@@ -13,6 +13,7 @@ CREATE TABLE mskt_styles (
     style_name TEXT NOT NULL,
 	style_description TEXT
 );
+
 -- TABLE ARTISTS --
 CREATE TABLE mskt_artists(
     id_artist INTEGER PRIMARY KEY AUTOINCREMENT,
