@@ -40,14 +40,17 @@ CREATE TABLE mskt_albums (
 CREATE TABLE IF NOT EXISTS mskt_songs (
     id_song INTEGER PRIMARY KEY AUTOINCREMENT,
     song_title TEXT NOT NULL,
+    song_bpm INTEGER,
+    song_release_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     id_album INTEGER,
     id_artist INTEGER NOT NULL,
     id_style INTEGER,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP, 
     FOREIGN KEY (id_album) REFERENCES mskt_album(id_album) ON DELETE SET NULL,
     FOREIGN KEY (id_artist) REFERENCES mskt_artists(id_artist) ON DELETE CASCADE,
     FOREIGN KEY (id_style) REFERENCES mskt_styles(id_style) ON DELETE SET NULL
 );
+
 -- FAVORITES --
 CREATE TABLE mskt_favorites (
     id_favorite INTEGER AUTO_INCREMENT PRIMARY KEY,
@@ -57,6 +60,7 @@ CREATE TABLE mskt_favorites (
     FOREIGN KEY (id_user) REFERENCES mskt_users(id_user) ON DELETE CASCADE,
     FOREIGN KEY (id_song) REFERENCES mskt_songs(id_song) ON DELETE CASCADE
 );
+
 -- PLAYLISTS --
 CREATE TABLE IF NOT EXISTS mskt_playlists (
     id_playlist INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -65,6 +69,7 @@ CREATE TABLE IF NOT EXISTS mskt_playlists (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_user) REFERENCES mskt_users(id_user) ON DELETE CASCADE
 );
+
 -- PLAYLISTS_SONGS --
 CREATE TABLE mskt_playlists_songs (
     id_playlist_song INTEGER PRIMARY KEY AUTOINCREMENT,
